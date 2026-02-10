@@ -53,4 +53,115 @@ elif menu == "1. Mentalidade & Gestão":
         st.write("- **20% Liberdade:** Investimentos e reserva.")
     
     with col2:
-        st.write("### O Passo a Passo Técnico
+        st.write("### O Passo a Passo Técnico")
+        st.markdown("""
+        1. **Planilha de Guerra:** Crie uma lista com todas as suas dívidas.
+        2. **Corte do Pequeno Gasto:** Aquele 'cafezinho' de R$ 10 por dia vira R$ 300 no mês.
+        3. **Conta PJ Digital:** Abra uma conta no Inter ou Nubank exclusiva para seus ganhos online.
+        """)
+
+    st.write("---")
+    st.markdown("### ✅ Desafio Prático")
+    t1 = st.checkbox("Anotei todos os meus gastos dos últimos 30 dias")
+    t2 = st.checkbox("Cancelei pelo menos uma assinatura que não uso")
+    if t1 and t2: st.success("Excelente! Você está pronto para o Capítulo 2.")
+
+elif menu == "2. Freelancer de Elite":
+    st.header("Capítulo 2: Prestação de Serviços")
+    st.image("https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80")
+    
+    st.write("### O Segredo do Perfil Vencedor")
+    st.markdown("""
+    Trabalhar como freelancer é a forma mais rápida de colocar dinheiro no bolso.
+    
+    **Onde agir:**
+    * **Workana:** Melhor para brasileiros.
+    * **Fiverr:** Ótimo para serviços rápidos de 5 dólares (Logos, dublagens).
+    * **99Freelas:** Focado em tecnologia e escrita.
+    """)
+    
+    with st.expander("Clique para ver o Passo a Passo de Cadastro"):
+        st.write("1. Escolha uma foto com fundo neutro e sorriso profissional.")
+        st.write("2. No título, seja específico: 'Editor de Vídeos para YouTube' é melhor que 'Editor'.")
+        st.write("3. Crie 3 amostras de trabalho (Portfólio). Se não tiver, faça de graça para uma ONG e use como exemplo.")
+    
+    st.markdown("### ✅ Desafio Prático")
+    st.checkbox("Criei meu perfil em pelo menos uma plataforma")
+    st.checkbox("Enviei minha primeira proposta de serviço")
+
+elif menu == "3. Vendas & E-commerce":
+    st.header("Capítulo 3: O Poder das Vendas")
+    st.image("https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=800&q=80")
+    
+    st.write("### Nichos que mais vendem hoje:")
+    st.info("Pet Shop, Casa & Cozinha, Tecnologia e Beleza.")
+    
+    st.write("### Como fazer Dropshipping Nacional:")
+    st.markdown("""
+    1. **Garimpo:** Procure no Shopee por vendedores locais com preço de atacado.
+    2. **Anúncio:** Crie uma conta no Mercado Livre e anuncie o produto (use fotos melhores que as do fornecedor).
+    3. **Venda:** Quando o cliente comprar, você vai no fornecedor, compra o produto e coloca o endereço do seu cliente.
+    """)
+
+    st.markdown("### ✅ Desafio Prático")
+    st.checkbox("Escolhi um produto para testar")
+    st.checkbox("Fiz as fotos do meu primeiro anúncio")
+
+elif menu == "4. Máquina de Afiliados":
+    st.header("Capítulo 4: Comissões no Automático")
+    st.image("https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80")
+    
+    st.write("### A Estratégia do 'Baixo Investimento'")
+    st.markdown("""
+    Ser afiliado é como ser um representante comercial moderno. 
+    
+    **O Ciclo do Sucesso:**
+    1. **Cadastro:** Hotmart (Cursos), Amazon (Produtos), Kiwify (E-books).
+    2. **A Escolha:** Escolha um produto que VOCÊ compraria.
+    3. **O Tráfego:** Crie um perfil no Instagram focado no nicho. Ex: 'Dicas de Emagrecimento'.
+    4. **A Conversão:** Poste 1 Reel por dia com uma dica e chame para o link da bio.
+    """)
+
+    st.markdown("### ✅ Desafio Prático")
+    st.checkbox("Me afiliei a um produto com boa comissão")
+    st.checkbox("Criei um perfil focado apenas nesse nicho")
+
+elif menu == "5. Império de Conteúdo":
+    st.header("Capítulo 5: Criando sua Audiência")
+    st.image("https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=800&q=80")
+    
+    st.write("### Como Viralizar com Estratégia")
+    st.markdown("""
+    O segredo do algoritmo é a **Retenção**.
+    
+    **Roteiro de 15 segundos:**
+    * **0-3s (Gancho):** 'O segredo que ninguém te conta sobre...'
+    * **3-10s (Valor):** Entregue a informação prometida de forma rápida.
+    * **10-15s (Ação):** 'Quer saber mais? Comenta EU que te envio o guia.'
+    """)
+    
+    st.markdown("### ✅ Desafio Prático")
+    st.checkbox("Gravei meu primeiro vídeo de 15 segundos")
+    st.checkbox("Postei no TikTok e no Instagram Reels")
+
+elif menu == "🧮 Simulador de Ganhos":
+    st.header("🧮 Simulador Financeiro")
+    st.write("Projete sua liberdade:")
+    
+    meta = st.number_input("Quanto você quer ganhar por mês? (R$)", value=5000)
+    tipo_trabalho = st.selectbox("Método Escolhido", ["Freelancer", "Venda de Produto", "Afiliado"])
+    
+    if tipo_trabalho == "Freelancer":
+        valor_job = st.number_input("Valor médio por serviço (R$)", value=250)
+        total = meta / valor_job
+        st.success(f"Você precisa de **{int(total)} serviços** por mês para bater a meta.")
+    elif tipo_trabalho == "Venda de Produto":
+        lucro_item = st.number_input("Lucro limpo por venda (R$)", value=40)
+        total = meta / lucro_item
+        st.success(f"Você precisa vender **{int(total)} unidades** por mês.")
+    else:
+        comissao = st.number_input("Comissão média (R$)", value=100)
+        total = meta / comissao
+        st.success(f"Você precisa de **{int(total)} indicações** por mês.")
+
+st.sidebar.info("Speed Money v2.0 - O manual da execução.")
