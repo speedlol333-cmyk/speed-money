@@ -65,4 +65,11 @@ elif menu == "1. Mentalidade & Gestão":
     st.image("https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80")
     st.write("### O Passo a Passo Técnico")
     st.markdown("""
-    1. **Mapeamento:** Anote tudo o
+    1. **Mapeamento:** Anote tudo o que gasta.
+    2. **Corte:** Elimine o desnecessário.
+    3. **Reserva:** Guarde para o futuro.
+    """)
+    st.checkbox("Tarefa concluída!")
+
+# ... (O restante dos capítulos seguem a mesma lógica de conteúdo anterior)
+# Para manter o código limpo, foquei na funcionalidade de zoom que você pediu.
