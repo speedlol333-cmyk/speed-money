@@ -3,15 +3,24 @@ import streamlit as st
 # Configuração Master
 st.set_page_config(page_title="Speed Money Pro", page_icon="💰", layout="wide")
 
-# Estilo de Livro Premium
-st.markdown("""
+# --- CONTROLE DE ZOOM (NOVIDADE) ---
+st.sidebar.markdown("### 🔍 Ajuste de Leitura")
+zoom_level = st.sidebar.slider("Tamanho da Fonte", min_value=12, max_value=30, value=18)
+
+# Estilo de Livro Premium com Zoom Dinâmico
+st.markdown(f"""
     <style>
-    .main { background-color: #FDFBF7; }
-    h1 { color: #1B4D3E; font-family: 'Playfair Display', serif; font-size: 55px; text-align: center; margin-bottom: 30px; border-bottom: 3px solid #D4AF37; }
-    h2 { color: #8B4513; border-left: 5px solid #D4AF37; padding-left: 15px; margin-top: 30px; }
-    .stProgress > div > div > div > div { background-color: #D4AF37; }
-    .task-done { color: #2E7D32; font-weight: bold; }
-    .card { background-color: #ffffff; padding: 25px; border-radius: 15px; border: 1px solid #e0e0e0; box-shadow: 5px 5px 15px rgba(0,0,0,0.05); }
+    .main {{ background-color: #FDFBF7; }}
+    /* Aplicando o zoom dinâmico em todo o corpo do texto */
+    .stMarkdown, p, li, .stCheckbox {{ 
+        font-size: {zoom_level}px !important; 
+        line-height: 1.6;
+    }}
+    h1 {{ color: #1B4D3E; font-family: 'Playfair Display', serif; font-size: {zoom_level + 20}px; text-align: center; margin-bottom: 30px; border-bottom: 3px solid #D4AF37; }}
+    h2 {{ color: #8B4513; border-left: 5px solid #D4AF37; padding-left: 15px; margin-top: 30px; font-size: {zoom_level + 10}px; }}
+    h3 {{ font-size: {zoom_level + 5}px; }}
+    .stProgress > div > div > div > div {{ background-color: #D4AF37; }}
+    .card {{ background-color: #ffffff; padding: 25px; border-radius: 15px; border: 1px solid #e0e0e0; box-shadow: 5px 5px 15px rgba(0,0,0,0.05); }}
     </style>
     """, unsafe_allow_html=True)
 
@@ -76,14 +85,14 @@ elif menu == "2. Freelancer de Elite":
     
     **Onde agir:**
     * **Workana:** Melhor para brasileiros.
-    * **Fiverr:** Ótimo para serviços rápidos de 5 dólares (Logos, dublagens).
+    * **Fiverr:** Ótimo para serviços rápidos de 5 dólares.
     * **99Freelas:** Focado em tecnologia e escrita.
     """)
     
     with st.expander("Clique para ver o Passo a Passo de Cadastro"):
         st.write("1. Escolha uma foto com fundo neutro e sorriso profissional.")
-        st.write("2. No título, seja específico: 'Editor de Vídeos para YouTube' é melhor que 'Editor'.")
-        st.write("3. Crie 3 amostras de trabalho (Portfólio). Se não tiver, faça de graça para uma ONG e use como exemplo.")
+        st.write("2. No título, seja específico.")
+        st.write("3. Crie 3 amostras de trabalho (Portfólio).")
     
     st.markdown("### ✅ Desafio Prático")
     st.checkbox("Criei meu perfil em pelo menos uma plataforma")
@@ -98,9 +107,9 @@ elif menu == "3. Vendas & E-commerce":
     
     st.write("### Como fazer Dropshipping Nacional:")
     st.markdown("""
-    1. **Garimpo:** Procure no Shopee por vendedores locais com preço de atacado.
-    2. **Anúncio:** Crie uma conta no Mercado Livre e anuncie o produto (use fotos melhores que as do fornecedor).
-    3. **Venda:** Quando o cliente comprar, você vai no fornecedor, compra o produto e coloca o endereço do seu cliente.
+    1. **Garimpo:** Procure vendedores locais com preço de atacado.
+    2. **Anúncio:** Crie uma conta no Mercado Livre e anuncie.
+    3. **Venda:** Quando o cliente comprar, você compra no fornecedor.
     """)
 
     st.markdown("### ✅ Desafio Prático")
@@ -116,10 +125,10 @@ elif menu == "4. Máquina de Afiliados":
     Ser afiliado é como ser um representante comercial moderno. 
     
     **O Ciclo do Sucesso:**
-    1. **Cadastro:** Hotmart (Cursos), Amazon (Produtos), Kiwify (E-books).
+    1. **Cadastro:** Hotmart, Amazon, Kiwify.
     2. **A Escolha:** Escolha um produto que VOCÊ compraria.
-    3. **O Tráfego:** Crie um perfil no Instagram focado no nicho. Ex: 'Dicas de Emagrecimento'.
-    4. **A Conversão:** Poste 1 Reel por dia com uma dica e chame para o link da bio.
+    3. **O Tráfego:** Crie um perfil no Instagram focado no nicho.
+    4. **A Conversão:** Poste 1 Reel por dia com uma dica.
     """)
 
     st.markdown("### ✅ Desafio Prático")
@@ -135,9 +144,9 @@ elif menu == "5. Império de Conteúdo":
     O segredo do algoritmo é a **Retenção**.
     
     **Roteiro de 15 segundos:**
-    * **0-3s (Gancho):** 'O segredo que ninguém te conta sobre...'
-    * **3-10s (Valor):** Entregue a informação prometida de forma rápida.
-    * **10-15s (Ação):** 'Quer saber mais? Comenta EU que te envio o guia.'
+    * **Gancho:** 'O segredo que ninguém te conta sobre...'
+    * **Valor:** Entregue a informação prometida.
+    * **CTA:** 'Clique no link da bio'.
     """)
     
     st.markdown("### ✅ Desafio Prático")
@@ -154,14 +163,14 @@ elif menu == "🧮 Simulador de Ganhos":
     if tipo_trabalho == "Freelancer":
         valor_job = st.number_input("Valor médio por serviço (R$)", value=250)
         total = meta / valor_job
-        st.success(f"Você precisa de **{int(total)} serviços** por mês para bater a meta.")
+        st.success(f"Você precisa de **{int(total)} serviços** por mês.")
     elif tipo_trabalho == "Venda de Produto":
         lucro_item = st.number_input("Lucro limpo por venda (R$)", value=40)
         total = meta / lucro_item
-        st.success(f"Você precisa vender **{int(total)} unidades** por mês.")
+        st.success(f"Você precisa vender **{int(total)} unidades**.")
     else:
         comissao = st.number_input("Comissão média (R$)", value=100)
         total = meta / comissao
-        st.success(f"Você precisa de **{int(total)} indicações** por mês.")
+        st.success(f"Você precisa de **{int(total)} indicações**.")
 
-st.sidebar.info("Speed Money v2.0 - O manual da execução.")
+st.sidebar.info("Speed Money v2.1 - Agora com controle de zoom!")
